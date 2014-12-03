@@ -1,0 +1,53 @@
+%h1 Quotes
+
+.list-group
+  - @quotes.each do |quote|
+    %a.list-group-item{:href => "/quotes/#{quote.id}"}
+      .list-group-item-text.list-inline= quote.content + ' - ' + quote.author
+      .btn-group.list-inline{'role' => 'group', 'aria-label' => '...'}
+        %button.btn.btn-default Edit
+        %button.btn.btn-default Destroy
+
+
+
+-#%table
+-#  %tr
+-#    %th.text-center Author
+-#    %th.text-center Content
+-#    %th
+-#
+-#  - @quotes.each do |quote|
+-#    %tr
+-#      %td.col-lg-2= quote.author
+-#      %td.col-lg-7= quote.content
+-#      %td.btn-group{'role' => 'group', 'aria-label' => '...'}
+-#        -#%button.btn.btn-default Show
+-#        -#%button.btn.btn-default Edit
+-#        -#%button.btn.btn-default Destroy
+-#        = link_to "Show", quote, class: 'btn btn-default'
+-#        = link_to "Edit", edit_quote_path(quote), class: 'btn btn-default'
+-#        = link_to "Destroy", quote, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-default'
+      -#%td= link_to 'Show', quote
+      -#%td= link_to 'Edit', edit_quote_path(quote)
+      -#%td= link_to 'Destroy', quote, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br
+
+-#= link_to 'New Quote', new_quote_path
+%button.btn.btn-default{:type => 'button', 'data-toggle' => 'modal', 'data-target' => '#new-quote'} New Quote
+
+-#.modal.fade{:id => '#new-quote', 'tabindex' => '-1', 'role' => 'dialog', 'aria-labelledby' => 'myModalLabel', 'aria-hidden' => 'true'}
+-#  .modal-dialog
+-#    .modal-content
+-#      .modal-header
+#new-quote.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &times;
+          %span.sr-only Close
+        %h4#myModalLabel.modal-title Create a new quote
+      .modal-body
+        = render partial: 'form', locals: {quote: Quote.new}
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

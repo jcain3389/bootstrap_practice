@@ -1,0 +1,9 @@
+= simple_form_for(quote) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :author
+    = f.input :content
+
+  .form-actions
+    = f.button :submit
