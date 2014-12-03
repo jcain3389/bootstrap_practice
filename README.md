@@ -1,4 +1,4 @@
-== Bootstrap Exercise
+BOOTSTRAP EXERCISE
 
 A simple CRUD app utilizing the Bootstrap template as a learning exercise at WeddingWire.
 
